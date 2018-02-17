@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-header h1{
+h1 .prueba{
   font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  color: blue;
 }

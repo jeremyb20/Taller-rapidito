@@ -21,8 +21,8 @@
       url: '/',
       // Se convoca al html
       templateUrl: './components/landing-page/landing-page.view.html',
-      // se convoca el css
-      css: './components/landing-page/landong-page.style.css'
+      // se convica el css
+      css: './components/landing-page/landing-page.style.css'
     })
 
     .state('users', {
@@ -36,7 +36,7 @@
           return $ocLazyLoad.load('./components/usuarios/usuarios.controller.js')
         }]
       },
-      // se convoca el css
+      // se convica el css
       css: './components/usuarios/usuarios.styles.css',
       controller: 'controladorUsuarios',
 		  controllerAs: 'vm'
@@ -52,6 +52,19 @@
       },
       css: './components/automoviles/autos.style.css',
       controller: 'controladorVehiculos',
+		  controllerAs: 'vm'
+    })
+
+    .state('works', {
+      url: '/works',
+      templateUrl: './components/tareas/tarea.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', ($ocLazyLoad) => {
+          return $ocLazyLoad.load('./components/tareas/tarea.controller.js')
+        }]
+      },
+      css: './components/tareas/tarea.style.css',
+      controller: 'controladorTareas',
 		  controllerAs: 'vm'
     })
 

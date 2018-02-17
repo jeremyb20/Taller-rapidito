@@ -1,44 +1,86 @@
 
-<div class="col-md-4">
 
-  <form name="formRegustroUsuarios" autocomplete="off" ng-submit="vm.registrarUsuario(vm.nuevoUsuario)" novalidate>
-    
-    <div class="form-group">
-      <label for="txtid">Número de cédula</label>
-      <input type="text" class="form-control" id="txtid" pattern="[0-9]+" aria-describedby="campoCedulaRequerido" ng-model="vm.nuevoUsuario.cedula" required>
-      <small id="campoCedulaRequerido" class="form-text text-muted">Este campo es requerido</small>
-    </div>
-
-    <div class="form-group">
-      <label for="txtNombre">Nombre del cliente</label>
-      <input type="text" class="form-control" id="txtNombre" pattern="[a-zA-Z]+[-_]*[a-zA-Z]+" aria-describedby="campoNombreRequerido" ng-model="vm.nuevoUsuario.nombre" required>
-      <small id="campoNombreRequerido" class="form-text text-muted">Este campo es requerido</small>
-    </div>
-
-    <div class="form-group">
-      <label for="txtApellido1">Primer apellido del cliente</label>
-      <input type="text" class="form-control" id="txtApellido1" pattern="[a-zA-Z]+[-_]*[a-zA-Z]+" aria-describedby="campoApellido1Requerido" ng-model="vm.nuevoUsuario.apellidoUno" required>
-      <small id="campoApellido1Requerido" class="form-text text-muted">Este campo es requerido</small>
-    </div>
-
-    <div class="form-group">
-      <label for="txtNombre">Segundo apellido del cliente</label>
-      <input type="text" class="form-control" id="txtNombre" pattern="[a-zA-Z]+[-_]*[a-zA-Z]+" aria-describedby="campoApellido2Requerido" ng-model="vm.nuevoUsuario.apellidoDos" required>
-      <small id="campoApellido2Requerido" class="form-text text-muted">Este campo es requerido</small>
-    </div>
-
-    <div class="form-group">
-      <label for="numPhone">Teléfono</label>
-      <input type="phone" class="form-control" id="numPhone" pattern="[0-9]+" aria-describedby="campoTelefonoRequerido" ng-model="vm.nuevoUsuario.telefono" required>
-      <small id="campoTelefonoRequerido" class="form-text text-muted">Este campo es requerido</small>
-    </div>
-
-    <div class="form-group">
-      <label for="txtEmail">Correo electrónico</label>
-      <input type="email" class="form-control" id="txtEmail" aria-describedby="campoEmailRequerido" ng-model="vm.nuevoUsuario.correo" required>
-      <small id="campoEmailRequerido" class="form-text text-muted">Este campo es requerido</small>
-    </div>
-
-    <button type="submit" class="btn btn-primary" ng-disabled="formRegustroUsuarios.$invalid ||formRegustroUsuarios.$error">Registrar</button>
-  </form>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-5">
+            <h1 class="text-center">
+              Registrar cliente
+            </h1>
+            <form name="formRegustroUsuarios" autocomplete="off" ng-submit="vm.registrarUsuario(vm.nuevoUsuario)" novalidate>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Número de cédula</label>
+                    <input  type="text" class="form-control" ng-required="true" id="txtid" pattern="[0-9]+" aria-describedby="campoCedulaRequerido" ng-model="vm.nuevoUsuario.cedula" placeholder="Número de cédula" >
+                    <small id="campoCedulaRequerido" class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Nombre</label>
+                    <input type="text" class="form-control" ng-required="true" id="txtNombre" pattern="[a-zA-Z]+[-_]*[a-zA-Z]+" aria-describedby="campoNombreRequerido" ng-model="vm.nuevoUsuario.nombre" placeholder="Nombre">
+                    <small id="campoNombreRequerido" class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Primer apellido</label>
+                      <input type="text" class="form-control" ng-required="true" id="txtApellido1" pattern="[a-zA-Z]+[-_]*[a-zA-Z]+" aria-describedby="campoApellido1Requerido" ng-model="vm.nuevoUsuario.primerApellido" placeholder="Primer apellido" >
+                      <small id="campoApellido1Requerido" class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Segundo apellido</label>
+                      <input  type="text" class="form-control" ng-required="true" id="txtNombre" pattern="[a-zA-Z]+[-_]*[a-zA-Z]+" aria-describedby="campoApellido2Requerido" ng-model="vm.nuevoUsuario.segundoApellido" placeholder="Segundo apellido">
+                      <small id="campoApellido2Requerido" class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
+          
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Telefono</label>
+                        <input type="phone" class="form-control" ng-required="true" id="numPhone" pattern="[0-9]+" aria-describedby="campoTelefonoRequerido" ng-model="vm.nuevoUsuario.telefono" placeholder="Telefono" >
+                        <small id="campoTelefonoRequerido" class="form-text text-muted">Este campo es requerido</small>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Correo</label>
+                        <input  type="text" class="form-control" id="txtEmail" ng-required="true" aria-describedby="campoEmailRequerido" ng-model="vm.nuevoUsuario.email" placeholder="Correo">
+                        <small id="campoEmailRequerido" class="form-text text-muted">Este campo es requerido</small>
+                      </div>
+                    </div>
+          
+                    <button type="submit" class="btn btn-primary btn-raised" ng-disabled="formRegustroUsuarios.$invalid">Registrar</button>
+              </form> 
+      </div>
+      <div class="col-md-7">
+          <h1 class="text-center">
+              Clientes registrados
+            </h1>
+            <table class="table table-striped table-bordered table-list table-responsive" id="tblVehiculos">
+                <thead>
+                    <tr>
+                        <th>
+                          <em class="fa fa-cog"></em>
+                        </th>
+                        <th>ID</th>
+                        <th class="hidden-xs">Nombre</th>
+                        <th>Primer apellido </th>
+                        <th>Segundo apellido</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="cliente in vm.listaClientes">
+                    <tr>
+                      <td>
+                        <button type="button" class="btn btn-primary" ng-click="vm.asignarVehiculo(cliente.cedula)">Registrar vehiculo</button>
+                      </td>
+                      <td>{{cliente.cedula}}</td>
+                      <td>{{cliente.nombre}}</td>
+                      <td>{{cliente.primerApellido}}</td>
+                      <td>{{cliente.segundoApellido}}</td>
+                      <td>{{cliente.telefono}}</td>
+                      <td>{{cliente.email}}</td>
+                    </tr>
+                </tbody>
+            </table>    
+      </div>
+  </div>
 </div>

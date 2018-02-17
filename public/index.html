@@ -1,18 +1,60 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="tallerRapidito">
+<html lang="en" ng-app="tallerRapidito">
+  <!-- <!-El ng-app lo que hace es llamar a la funcionalidad que esta dentro del app.js, que es el archivo principal de angular-->
 <head>
   <meta charset="UTF-8">
-  <meta name="author" content="Kevin Aguilar">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Taller Rápidito</title>
-  <!-- Estilos de bootstrap -->
-    <link rel="stylesheet" href="./lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="./lib/bootstrap/bootstrap.min.css">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
 </head>
 <body>
-  
-  <div ui-view></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
 
+        <a class="navbar-brand" href="#">Taller Rápidito</a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navPrincipal" aria-controls="navPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navPrincipal">
+          <ul class="navbar-nav mr-auto justify-content-end">
+    
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+    
+            <li class="nav-item ">
+              <a class="nav-link -toggle" href="#!/users" id="dropVehiculos" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false">
+                  Usuarios
+                </a>
+            </li>
+    
+            <li class="nav-item ">
+              <a class="nav-link -toggle" href="#!/cars" id="dropVehiculos" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false">
+                Vehiculos
+              </a>
+            
+            </li>
+
+            <li class="nav-item ">
+                <a class="nav-link -toggle" href="#!/works" id="dropTareas" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false">
+                  Registrar Tareas
+                </a>
+                
+              </li>
+
+
+
+          </ul>
+        </div>
+      </nav>
+  
+
+   
+  <div ui-view></div>
+  
   <!-- Dependencias -->
   <script src="./lib/jquery.min.js"></script>
   <script src="./lib/popper.min.js"></script>

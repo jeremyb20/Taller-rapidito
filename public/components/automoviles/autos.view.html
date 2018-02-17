@@ -1,3 +1,80 @@
-<h1>
-  Hola soy la vista de carros
-</h1>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-5">
+            <h1 class="text-center">
+              Registrar vehiculo
+            </h1>
+            <form name="formRegustroVehiculos" autocomplete="off" ng-submit="vm.registrarVehiculo(vm.nuevoVehiculo)" novalidate>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="txtMatricula">Número de matricula</label>
+                    <input  type="text" class="form-control" ng-required="true" id="txtMatricula" aria-describedby="campoCedulaRequerido" ng-model="vm.nuevoVehiculo.matricula" placeholder="Número de matricula" >
+                    <small id="campoCedulaRequerido" class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="txtMarca">Marca</label>
+                    <input type="text" class="form-control" ng-required="true" id="txtMarca" pattern="[a-zA-Z]+[-_]*[a-zA-Z]+" aria-describedby="campoNombreRequerido" ng-model="vm.nuevoVehiculo.marca" placeholder="Marca">
+                    <small id="campoNombreRequerido" class="form-text text-muted">Este campo es requerido</small>
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="txtModelo">Modelo</label>
+                      <input type="text" class="form-control" ng-required="true" id="txtModelo" pattern="[a-zA-Z]+[-_]*[a-zA-Z]+" aria-describedby="campoApellido1Requerido" ng-model="vm.nuevoVehiculo.modelo" placeholder="Modelo">
+                      <small id="campoApellido1Requerido" class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="txtAnno">Año</label>
+                      <input  type="text" class="form-control" ng-required="true" id="txtAnno" pattern="[0-9]+"  aria-describedby="campoApellido2Requerido" ng-model="vm.nuevoVehiculo.anno" placeholder="Año">
+                      <small id="campoApellido2Requerido" class="form-text text-muted">Este campo es requerido</small>
+                    </div>
+                  </div>
+          
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="txtCapacidad">Capacidad</label>
+                        <input type="phone" class="form-control" ng-required="true" id="txtCapacidad" pattern="[0-9]+" aria-describedby="campoTelefonoRequerido" ng-model="vm.nuevoVehiculo.capacidad" placeholder="Capacidad">
+                        <small id="campoTelefonoRequerido" class="form-text text-muted">Este campo es requerido</small>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="txtKilometraje">Kilometraje</label>
+                        <input  type="text" class="form-control" id="txtKilometraje" ng-required="true" pattern="[0-9]+"aria-describedby="campoEmailRequerido" ng-model="vm.nuevoVehiculo.kilometraje" placeholder="Kilometraje">
+                        <small id="campoEmailRequerido" class="form-text text-muted">Este campo es requerido</small>
+                      </div>
+                    </div>
+          
+                    <button type="submit" class="btn btn-primary btn-raised" ng-disabled="formRegustroVehiculos.$invalid">Registrar</button>
+              </form> 
+      </div>
+      <div class="col-md-7">
+          <h1 class="text-center">
+              Clientes registrados
+            </h1>
+            <table class="table table-striped table-bordered table-list table-responsive" id="tblVehiculos">
+                <thead>
+                    <tr>
+                        <th class="hidden-xs">Seleccionar</th>
+                        <th>Matricula</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Año</th>
+                        <th>Capacidad</th>
+                        <th>Kilometraje</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="y in vm.listaVehiculo">
+                    <tr>
+                      <td><button type="button" class="btn btn-primary" ng-click="vm.asignarTarea(vehiculo)">Asignar Tarea</button></td>
+                      <td>{{vehiculo.matricula}}</td>
+                      <td>{{vehiculo.marca}}</td>
+                      <td>{{vehiculo.modelo}}</td>
+                      <td>{{vehiculo.anno}}</td>
+                      <td>{{vehiculo.capacidad}}</td>
+                      <td>{{vehiculo.kilometraje}}</td>
+                    </tr>
+                </tbody>
+            </table>    
+      </div>
+  </div>
+</div>
