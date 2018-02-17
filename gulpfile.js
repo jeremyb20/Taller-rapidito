@@ -5,6 +5,7 @@
 const gulp = require('gulp');
 const connect = require('gulp-connect');
 const nodemon = require('gulp-nodemon');
+const browserSync = require('browser-sync').create();
 
 // Se crea una tarea que conecta el servidor, con la ruta que va a conectar
 gulp.task('connect', () => {
@@ -42,18 +43,21 @@ gulp.task('dependencies', () => {
 gulp.task('html', () => {
   gulp.src('./public/components/**/*.html')
   .pipe(connect.reload())
+  .pipe(browserSync.stream());
 })
 
 // Tarea que recarga todos los css
 gulp.task('css', () => {
   gulp.src('./public/components/**/*.css')
   .pipe(connect.reload())
+  .pipe(browserSync.stream());
 })
 
 // Tarea que recarga todos los js
 gulp.task('js', () => {
 gulp.src('./public/components/**/*.js')
   .pipe(connect.reload())
+  .pipe(browserSync.stream());
 })
 
 // Tarea que vigila todos los cambios dentro de los archivos de html, css y js y llama a las tareas de recarga de cada uno
@@ -81,4 +85,9 @@ gulp.task('watch', () => {
 });
 
 // Tarea global que llama todas las tareas
-gulp.task('default', ['connect','dependencies','html','css','js','watch']);
+//lo que hace esta funcion es llamar todas las dpecncias y conectarlas a la misma red de wifi
+gulp.task('default', ['connect','dependencies','html','css','js','watch'],()=>{
+  browserSync.init({
+    server: './public'
+  })
+});

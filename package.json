@@ -13,13 +13,13 @@
     "angular": "^1.6.8",
     "angular-css": "^1.0.8",
     "bootstrap": "^4.0.0",
-    "bootstrap-material-design": "^4.1.1",
     "jquery": "^3.3.1",
     "oclazyload": "^1.1.0",
     "popper.js": "^1.12.9",
     "sweetalert": "^2.1.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.2.0",
     "gulp-nodemon": "^2.2.1"
