@@ -11,6 +11,7 @@ Pasos para levantar el proyecto.
 
 (sudo) npm install gulp gulp-cli nodemon -g
 
-para ver las actualizaciones de un codigo a nivel global es decir desde cualquier dispositivo se usa browsersync.io
+para ver las actualizaciones de un codigo a nivel global es decir desde cualquier dispositivo se usa npm install -g browser-sync desde la pagina de 
+ browsersync.io
 
 luego para llamrlo dentro de la aplicacion es λ npm install browser-sync --save-dev
