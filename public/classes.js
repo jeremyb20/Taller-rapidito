@@ -1,40 +1,58 @@
+// TODO Dentro de este archivo se crean los objetos con sus respectivos métodos
 class Cliente{
-  constructor(pCedula, pNombre, pPrimerAppellido, pSegundoApellido, pTelefono, pEmail){
-      this.cedula = pCedula;
-      this.nombre = pNombre;
-      this.primerApellido = pPrimerAppellido;
-      this.segundoApellido = pSegundoApellido;
-      this.telefono = pTelefono;
-      this.email = pEmail;
-      this.listaVehiculos = [];
+  constructor(pCedula, pNombre1, pApellido1, pEdad){
+    this.cedula = pCedula;
+    this.nombre1 = pNombre1;
+    this.apellido1 = pApellido1;
+    this.edad = pEdad;
+    this.vehiculos = [];
   }
-  
-  agregarVehiculo(pVehiculo){
-      this.listaVehiculos.push(pVehiculo);
+
+  agregarVehiculo(pnuevoVehiculo) {
+    this.vehiculos.push(pnuevoVehiculo);
+  }
+
+  getVehiculos(){
+    return this.vehiculos;
+  }
+
+  getcedula(){
+    return this.cedula;
+  }
+
+  getNombre(){
+    return `${this.nombre1} ${this.apellido1}`;
   }
 }
 
 class Vehiculo{
-  constructor(pMatricula, pMarca, pModelo, pAnno, pCapacidad, pKilometraje/*, pAire*/){
-      this.matricula = pMatricula;
-      this.marca = pMarca;
-      this.modelo = pModelo;
-      this.anno = pAnno;
-      this.capacidad = pCapacidad;
-      this.kilometraje = pKilometraje;
-      this.listaTrabajos = [];
+  constructor(pmodelo, pmatricula, pmarca){
+    this.modelo = pmodelo;
+    this.matricula = pmatricula;
+    this.marca = pmarca;
+    this.reparaciones = [];
   }
-  agregarTrabajo(pObjTrabajo){   
-      this.listaTrabajos.push(pObjTrabajo);
+
+  agregarReparaciones(pnuevaReparacion){
+    this.reparaciones.push(pnuevaReparacion);
+  }
+
+  getReparaciones(){
+    return this.reparaciones;
+  }
+
+  getmatricula(){
+    return this.matricula;
+  }
+
+  getInfoVehiculo(){
+    return `${this.marca} ${this.modelo}`;
   }
 }
 
-class Trabajo{
-  constructor(pNombre, pDescripcion, pFecha, pEstado, pCosto){
-      this.nombre = pNombre;
-      this.descripcion = pDescripcion;
-      this.fecha = pFecha;
-      this.estado = pEstado;
-      this.costo = pCosto;
+class Reparaciones{
+  constructor(pcosto, pdescripcion){
+    this.costo = pcosto;
+    this.descripcion = pdescripcion;
   }
 }

@@ -1,32 +1,52 @@
-(()=>{
+(() => {
   'use strict';
   angular
   .module('tallerRapidito')
-  .controller('controladorTareas', controladorTareas);
+  .controller('controladorReparaciones', controladorReparaciones);
 
-  controladorTareas.$inject = ['servicioUsuarios'];
+  controladorReparaciones.$inject = ['$stateParams', '$state', 'servicioUsuarios']
 
-  function controladorTareas(servicioUsuarios){
+  function controladorReparaciones($stateParams, $state, servicioUsuarios){
     let vm = this;
 
-    vm.nuevaTarea = {};
+    // aqui validamos que el paramatero exista, en caso de que no exista nos redijirá al estado anterior
+    if(!$stateParams.objVehiculoTemp){
+      $state.go('cars');
+    }
 
-    vm.listaTarea = servicioUsuarios.getUsuarios();
+    let objSinFormatoVehiculo = JSON.parse($stateParams.objVehiculoTemp);
 
-    vm.registrarTarea = (pnuevaTarea) =>{
-      let objNuevaTarea = new Tarea(pnuevaTarea.nombreTarea, pnuevaTarea.descripcion, pnuevaTarea.fecha, pnuevaTarea.estado, pnuevaTarea.costo);
+    let objVehiculo = new Vehiculo (objSinFormatoVehiculo.modelo, objSinFormatoVehiculo.matricula, objSinFormatoVehiculo.marca);
 
+    vm.infoVehiculos = objVehiculo.getInfoVehiculo();
 
-      servicioUsuarios.addUsuario(pnuevaTarea)
-      vm.listaTarea = servicioUsuarios.getUsuarios();
+    listaReparaciones();
 
-      swal("Registro exitoso", "La tarea ha sido registrado correctamente", "success", {
+    vm.nuevaReparacion = {};
+
+    vm.listaReparaciones = servicioUsuarios.getReparaciones(objVehiculo);
+
+    vm.registrarReparacion = (pnuevaReparacion) => {
+
+      let objReparacion = new Reparaciones(pnuevaReparacion.costo, pnuevaReparacion.descripcion)
+
+      servicioUsuarios.addReparaciones(objVehiculo, objReparacion);
+
+      listaReparaciones();
+
+      swal("Registro exitoso", "Se ha registrado correctamente la reparación", "success", {
         button: "Aceptar",
       });
 
-      vm.nuevaTarea = null;
+      vm.nuevaReparacion = null;
+    }
+
+    vm.volver = () => {
+      $state.go('users');
+    }
+
+    function listaReparaciones(){
+      vm.listaReparaciones = servicioUsuarios.getReparaciones(objVehiculo);
     }
   }
-
-
 })();

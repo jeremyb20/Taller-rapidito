@@ -4,62 +4,56 @@
   .module('tallerRapidito')
   .controller('controladorVehiculos', controladorVehiculos);
 
-  controladorVehiculos.$inject = ['servicioVehiculos','servicioUsuarios'];
+  controladorVehiculos.$inject = ['$stateParams', '$state', 'servicioUsuarios']
 
-  function controladorVehiculos(servicioVehiculos,servicioUsuarios){
+  function controladorVehiculos($stateParams, $state, servicioUsuarios){
     let vm = this;
+
+    // aqui validamos que el paramatero exista, en caso de que no exista nos redijirá al estado anterior
+    if(!$stateParams.objUsuarioTemp){
+      $state.go('usuarios');
+    }
+
+    let objSinFormatoUsuario = JSON.parse($stateParams.objUsuarioTemp);
+
+    let objUsuario = new Cliente(objSinFormatoUsuario.cedula, objSinFormatoUsuario.nombre1, objSinFormatoUsuario.apellido1, objSinFormatoUsuario.edad);
 
     vm.nuevoVehiculo = {};
 
-    // vm.listaVehiculos = servicioVehiculos.getVehiculos();
-    // debugger;
+    vm.usuarioActivo = objUsuario.getNombre();
 
-    // Funcion que es llamda desde el html para registra un nuevo usuario
-    vm.registrarVehiculo = (pnuevoVehiculo) => {
+    listarVehiculos();
 
-      // Tomamos el objeto sin formato y lo comvertimos en un objeto de tipo cliente
-      let objNuevoVehiculo = new Vehiculo(pnuevoVehiculo.matricula, pnuevoVehiculo.marca, pnuevoVehiculo.modelo, pnuevoVehiculo.anno, pnuevoVehiculo.capacidad, pnuevoVehiculo.kilometraje);
+    vm.listaVehiculos = servicioUsuarios.getVehiculos(objUsuario);
 
-      // Pasamos al servicio el nuevo obj de tipo cliente para ser almacenado en el localStorage
-      servicioVehiculos.addVehiculo(objNuevoVehiculo)
- 
-      console.log(objNuevoVehiculo)
+    vm.registrarVehiculo = (pnuevovehiculo) => {
 
+      let objVehiculoNuevo = new Vehiculo(pnuevovehiculo.modelo, pnuevovehiculo.matricula, pnuevovehiculo.marca);
 
-      // let objCliente = servicioUsuarios.getUsuarios();
-      // objCedula =  buscarClientePorCedula(cedula);
+      servicioUsuarios.addVehiculo(objVehiculoNuevo, objUsuario);
 
-      // objCliente = objCedula;
-
-      // objCliente.agregarVehiculo(objNuevoVehiculo);
-      // actualizarCliente(objCliente);
-      
-      
-   
-      // Retroalimentacion Visual para los usuarios
-      swal("Registro exitoso", "El usuario ha sido registrado correctamente", "success", {
+      swal("Registro exitoso", "Se ha registrado correctamente el vehiculo", "success", {
         button: "Aceptar",
       });
 
-      // Se limpia el formulario
+      listarVehiculos();
+
       vm.nuevoVehiculo = null;
+    };
 
-      vm.listaVehiculos = servicioVehiculos.getVehiculos();
+    vm.registrarArreglo = (pVehiculo) => {
+      console.log(pVehiculo);
+
+      $state.go('works', {objVehiculoTemp: JSON.stringify(pVehiculo)})
     }
 
-
-    vm.asignarTarea = (pObjUsuario) => {
-
-      let cedula = servicioVehiculos.getVehiculos();
-
-      console.log(pObjUsuario);
-
-      localStorage.setItem('cedulaSeleccionadaLS', cedula);
-
-      window.location.href = '#!/cars';
+    vm.volver = () => {
+      $state.go('users');
     }
 
-    
+    function listarVehiculos() {
+      vm.listaVehiculos = servicioUsuarios.getVehiculos(objUsuario);
+    }
 
   }
 })();

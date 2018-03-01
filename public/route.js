@@ -50,6 +50,9 @@
           return $ocLazyLoad.load('./components/automoviles/autos.controller.js')
         }]
       },
+      params:{
+        objUsuarioTemp: ''
+      },
       css: './components/automoviles/autos.style.css',
       controller: 'controladorVehiculos',
 		  controllerAs: 'vm'
@@ -63,12 +66,15 @@
           return $ocLazyLoad.load('./components/tareas/tarea.controller.js')
         }]
       },
+      params: {
+        objVehiculoTemp: ''
+      },
       css: './components/tareas/tarea.style.css',
-      controller: 'controladorTareas',
+      controller: 'controladorReparaciones',
 		  controllerAs: 'vm'
     })
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');// cargar por defecto el landing page
   }
-
+//oclazyload recarga todas los controladores
 })();
